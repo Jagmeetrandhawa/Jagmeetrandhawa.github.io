@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name ="viewport" content="width=device-width,intial-scale=1.0">
+        <title>Jagmeet Randhawa Portfolio Website</title>
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" /> 
+
+        <!--Update these with your own fonts if you want-->
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
+        +Pro:300,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <!--img src="img/JagmeetRandhawa.jpg" width="400" height="500" alt=""-->
+            </div>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="#services" class="nav__link">My Services</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About me</a></li>
+                    <li class="nav__item"><a href="#work" class="nav__link">My Work</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!--Introduction-->
+        <section class="intro" id="home">
+            <h1 class="section__title section__title--intro">
+                Hi, I am <strong>Jagmeet Randhawa</strong>
+            </h1>
+            <p class="section__subtitle section__subtitle--intro">back-end dev</p>
+            <img src="img/JagmeetRandhawaSmiling.JPG"  alt="Lake tahoe Jagmeet Smiling" class="intro__img">
+
+        </section>
+
+        <!--My services-->
+        <section class="my-services" id="services">
+            <h2 class="section__title section__title--services">What I do</h2>
+            <div class="services">
+                <div class="service">
+                    <h3>Web Developer Intern</h3>
+                    <p>Designed and developed user-friendly websites, maintained and modified web applications.
+                        Wrote modular, secure, and clean code (HTML/CSS).
+                        Fixed bugs and implemented enhancements that improved web functionality.
+                         ---</p>    
+                    
+                </div> <!--/ service-->
+
+                <div class="service">
+                    <h3>Astoria.Ai</h3>
+                    <p>Lead Azure devOps Astoria project with colleagues in an agile environment by employing scrum methodology for maximum team efficiency.
+                        Worked on version control tools such as Git, to track changes by team members involving concepts such as Pulling, Pushing, Merge, Branch and Tags.
+                        </p>    
+                    
+                </div> <!--/ service-->
+
+                <div class="service">
+                    <h3>Performance Engineer Intern</h3>
+                    <p>Creating a tool using RabbitMQ to capture packets and replay them at a significantly higher rate.
+                        Analyzing customer PCAPs to understand protocols, data flows and their impact on product performance
+                        Create performance test cases, execute performance tests, and report results
+                        </p>    
+                    
+                </div> <!--/ service-->
+            </div>  <!--/ services-->
+
+            <a href="#work" class="btn">My Work</a>
+        </section>
+
+        <!--About Me-->
+        <section class="about-me" id="about">
+            <h2 class="section__title section__title--about">Who I am</h2>
+            <p class="section__subtitle section__subtitle--about"> Developer based out of San Fransiso</p>
+
+            <div class="about-me__body">
+                <p> Lead Azure devOps Astoria project with colleagues in an agile environment by employing
+                     scrum methodology for maximum team efficiency. Worked on version control tools such as 
+                     Git, to track changes by team members involving concepts such as Pulling, Pushing, Merge
+                     , Branch and Tags.</p>
+                <p>Lead Azure devOps Astoria project with colleagues in an agile environment by employing
+                    scrum methodology for maximum team efficiency. Worked on version control tools such as 
+                    Git, to track changes by team members involving concepts such as Pulling, Pushing, Merge
+                    , Branch and Tags</p>
+            </div>
+            <img src="img/JagmeetRandhawa.jpg"  alt="ADD PHOTO LATER" class="about-me__img">
+        </section>
+
+        <!--MY WORK-->
+        <section class="my-work" id="work">
+            <h2 class="section__title">My work</h2>
+            <p class="section__subtitle"> A selection of my range of work</p>
+
+            <div class="portfolio">
+                <!--PORTFOLIO ITEM-->
+                <a href="portfolio-item.html" class="portfolio__item">
+                    <img src="img/JagmeetRandhawa.jpg" width="400" height="500" alt="PUT Some pHOTO here" class="portfolio__img">                </a>
+                <!--PORTFOLIO ITEM-->
+                <a href="portfolio-item.html" class="portfolio__item">
+                    <img src="img/JagmeetRandhawa.jpg" width="400" height="500" alt="PUT Some pHOTO here" class="portfolio__img">                </a>
+                    <!--PORTFOLIO ITEM-->
+                <a href="portfolio-item.html" class="portfolio__item">
+                    <img src="img/JagmeetRandhawa.jpg" width="400" height="500"alt="PUT Some pHOTO here" class="portfolio__img">                </a>
+                    <!--PORTFOLIO ITEM-->
+                <a href="portfolio-item.html" class="portfolio__item">
+                    <img src="img/JagmeetRandhawa.jpg" width="400" height="500" alt="PUT Some pHOTO here" class="portfolio__img">                </a>
+
+                </div>
+        </section>
+
+        <!--FOOTER-->
+        <footer class="footer">
+            <!--replace with your own email-->
+            <a href="mailto:randhawa98jagmeet@gmail.com" class="footer-link">randhawa98jagmeet@gmail.com</a>
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://github.com/Jagmeetrandhawa">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://www.linkedin.com/in/jagmeet-randhawa-505828151/">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://codepen.io">
+                        <i class="fab fa-twitter"></i>
+                </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://codepen.io">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+
+        <script src="js/index.js"></script>
+    </body>
+</html>
