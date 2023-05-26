@@ -284,7 +284,7 @@ header{
 
 .my-services{
     background-color: var(--clr-dark);
-    background-image: url(../img/programmerPhoto.jpg);
+    background-image: url(programmerPhoto.jpg);
     background-size: cover;
     background-blend-mode: multiply;
     /*background multiple to darken image behind */
