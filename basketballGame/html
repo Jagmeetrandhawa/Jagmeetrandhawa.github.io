@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basketball Shooting Game</title>
+  <style>
+    /* CSS styles for the game */
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+  <script>
+    // JavaScript code for the game
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let score = 0;
+
+    // Function to handle mouse click event
+    function shoot(event) {
+      // Get the click coordinates relative to the canvas
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = event.clientX - rect.left;
+      const mouseY = event.clientY - rect.top;
+
+      // Check if the click is inside the hoop area
+      if (mouseX > 350 && mouseX < 450 && mouseY > 500 && mouseY < 550) {
+        score++;
+      }
+    }
+
+    // Function to draw the game elements on the canvas
+    function draw() {
+      // Clear the canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw the hoop
+      ctx.fillStyle = 'orange';
+      ctx.fillRect(350, 500, 100, 50);
+
+      // Draw the basketball
+      ctx.fillStyle = 'brown';
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2, canvas.height - 30, 15, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Draw the score
+      ctx.fillStyle = 'white';
+      ctx.font = '24px Arial';
+      ctx.fillText(`Score: ${score}`, 10, 30);
+    }
+
+    // Attach the click event listener to the canvas
+    canvas.addEventListener('click', shoot);
+
+    // Game loop
+    function gameLoop() {
+      draw();
+      requestAnimationFrame(gameLoop);
+    }
+
+    // Start the game loop
+    gameLoop();
+  </script>
+</body>
+</html>
