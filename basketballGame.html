@@ -26,6 +26,10 @@
     const ctx = canvas.getContext('2d');
 
     let score = 0;
+    let ballX = canvas.width / 2;
+    let ballY = canvas.height - 30;
+    let dx = 0;
+    let dy = 0;
 
     // Function to handle mouse click event
     function shoot(event) {
@@ -37,6 +41,26 @@
       // Check if the click is inside the hoop area
       if (mouseX > 350 && mouseX < 450 && mouseY > 500 && mouseY < 550) {
         score++;
+        resetBall();
+      }
+    }
+
+    // Function to reset the ball position
+    function resetBall() {
+      ballX = canvas.width / 2;
+      ballY = canvas.height - 30;
+      dx = 0;
+      dy = 0;
+    }
+
+    // Function to update the ball position
+    function updateBall() {
+      ballX += dx;
+      ballY += dy;
+
+      // Check if the ball goes out of bounds
+      if (ballY < 0 || ballY > canvas.height) {
+        resetBall();
       }
     }
 
@@ -52,7 +76,7 @@
       // Draw the basketball
       ctx.fillStyle = 'brown';
       ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height - 30, 15, 0, Math.PI * 2);
+      ctx.arc(ballX, ballY, 15, 0, Math.PI * 2);
       ctx.fill();
 
       // Draw the score
@@ -66,6 +90,7 @@
 
     // Game loop
     function gameLoop() {
+      updateBall();
       draw();
       requestAnimationFrame(gameLoop);
     }
