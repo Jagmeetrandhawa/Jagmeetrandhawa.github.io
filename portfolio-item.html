@@ -12,13 +12,13 @@
         <!--Update these with your own fonts if you want-->
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
         +Pro:300,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
 
     </head>
     <body>
         <header>
             <div class="logo">
-                <!--img src="JagmeetRandhawa.jpg" width="400" height="500" alt=""-->
+                <!--img src="img/JagmeetRandhawa.jpg" width="400" height="500" alt=""-->
             </div>
             <button class="nav-toggle" aria-label="toggle navigation">
                 <span class="hamburger"></span>
@@ -37,24 +37,89 @@
         <!--Introduction-->
         <section class="intro">
             <h1 class="section__title section__title--intro">
-                The title <strong>of my project</strong>
+                Operating Systems <strong> Simple Shell Script</strong>
             </h1>
-            <p class="section__subtitle section__subtitle--intro">a short subtitle</p>
-            <img src="JagmeetRandhawaSmiling.JPG"  alt="Lake tahoe Jagmeet Smiling" class="intro__img">
+            <p class="section__subtitle section__subtitle--intro">Skills/Tools C/Git Private Repository</p>
+            <img src="img/simpleShellTurtle.jpg"  alt="Simple Shell Turtle" class="intro__img" style="width: 500px; height: 177px;">
 
         </section>
 
         <div class="portfolio-item-individual">
-            <p>Designed and developed user-friendly websites, maintained and modified web applications.
-                Wrote modular, secure, and clean code (HTML/CSS).
-                Fixed bugs and implemented enhancements that improved web functionality.</p>
-            <img src="img/portfoliopic.JPG" alt = "">
-            <p>Designed and developed user-friendly websites, maintained and modified web applications.
-                Wrote modular, secure, and clean code (HTML/CSS).
-                Fixed bugs and implemented enhancements that improved web functionality.</p>
-            <p>Designed and developed user-friendly websites, maintained and modified web applications.
-                Wrote modular, secure, and clean code (HTML/CSS).
-                Fixed bugs and implemented enhancements that improved web functionality.</p>
+            <h1>Simple Shell</h1>
+
+<h3>Summary</h3>
+
+<p>This program, <code>sshell</code>, is a simple version of a real-life UNIX shell such as <code>bash</code> and <code>zsh</code>. Supported features include executing commands with optional arguments, redirection of standard output and standard error, and pipelining with up to 3 pipelines.</p>
+
+<h3>Implementation</h3>
+
+<p>This program is made up of 3 main parts, which can be split into further subparts:</p>
+
+<ol>
+  <li>
+    <h3>Parsing the command line</h3>
+    <ol>
+      <li>Parsing</li>
+      <li>Analyzing Command Line</li>
+      <li>Error checking</li>
+    </ol>
+  </li>
+  <li>
+    <h3>Executing the given function(s)</h3>
+    <ol>
+      <li>Pipelined Commands</li>
+      <li>Built-in Commands</li>
+      <li>Regular Commands</li>
+      <li>Memory Management</li>
+    </ol>
+  </li>
+  <li>
+    <h3>Testing</h3>
+  </li>
+</ol>
+
+<h3>Parsing the Command Line</h3>
+
+<p>Because whitespace around redirection and pipeline symbols do not matter and the entire command line input is given as a single string, the command line input must be parsed.</p>
+
+<h3>Parsing</h3>
+
+<p>After receiving the command line input, the shell parses the input by iterating through each letter by using the function <code>parseCmdLine</code> and helper functions <code>storeRedirect</code> and <code>storePipe</code>. Separate tokens are generated, which represent either the <code>command</code> or <code>argument(s)</code>, based on the following delimiters: <code>&gt;</code>, <code>|</code>, <code>&amp;</code>, and white space <code> </code>. These tokens, along with the redirection and pipeline symbols with the help of <code>storeRedirect</code> and <code>storePipe</code>, are stored consecutively in the order they were inputted in <code>char* args[ARGS_MAX+1]</code>, whose memory indexes are allocated using <code>malloc()</code>.</p>
+
+<h3>Analyzing Command Line</h3>
+
+<p>The function <code>analyzeArgs</code> is called to analyze the inputs by iterating through <code>args</code> with index <code>i</code>. This function counts the number of pipes and also determines whether standard output or standard error needs to be redirected. If they need to be redirected, the next input, <code>args[i+1]</code>, must be the name of the file, and is therefore opened using the function <code>openFile</code>. This function checks whether a file was previously opened, closes the old file, and opens the new file. Then <code>analyzeArgs</code> moves all values in <code>args</code> whose index satisfies <code>index >= i+2</code> forward in the array <code>args</code> by 2 indices. This removes the redirection operator as well as the file name, so that <code>args</code> may be passed to <code>execvp</code> when it is time to execute the command. For example, <code>echo hello &gt; file.txt (null)</code> will be truncated to <code>echo hello (null)</code>. Finally, <code>analyzeArgs</code> also checks for incorrect inputs of consecutive symbols, such as <code>&gt;||</code>.</p>
+
+<h3>Error Checking</h3>
+
+<p>Most of the error checking is done after the command line input has been parsed. Further error checking is done after analyzing the <code>args</code> array.</p>
+
+<h3>Executing the Given Function(s)</h3>
+
+<p>There are 3 ways that commands may be executed: <em>pipelined commands</em>, <em>built-in commands</em>, and <em>regular commands</em>.</p>
+
+<h3>Pipelined Commands</h3>
+
+<p>There may be up to 3 pipes with 4 commands. If commands need to be pipelined (indicated by <code>numPipes &gt; 0</code>), the <code>pipeline</code> function is called. This function creates 4 <code>char* process[]</code> arrays and populates them by calling <code>getPipelineCmds</code>. <code>getPipelineCmds</code> is used to separate the different phases of the pipeline by scanning <code>args</code>, as well as indicating if the standard error of the previous command should be redirected to the next command. For example, if <code>args</code> contains <code>cat file.txt | head -9 | grep a | wc -l (null)</code>, the 4 respective <code>process</code> arrays will contain <code>cat file.txt (null)</code>, <code>head -9 (null)</code>, <code>grep a (null)</code>, and <code>wc -l (null)</code>. Next, <code>pipeline</code> will create 3 pipes by using the <code>pipe()</code> function. Then, for each command to be executed, <code>fork()</code> will be called to perform <code>execvp()</code> on each of the commands. The standard output and standard error redirections are handled as necessary using <code>dup2()</code>. After all of the <code>fork()</code> calls, <code>waitpid()</code> and <code>WIFEXITED</code> are used to collect the exit statuses of each command. The completion message is printed to <code>stderr</code>.</p>
+
+<h3>Built-in Commands</h3>
+
+<p>There are 4 built-in commands: <code>exit</code>, <code>cd</code>, <code>pwd</code>, and <code>sls</code>. <code>exit</code> is detected immediately after the command line is received as input and subsequently breaks out of the infinite loop, thus ending the program. The <code>cd</code> function uses the <code>chdir()</code> function to change to the newly specified directory. The <code>pwd</code> function uses the <code>getcwd()</code> function to get the name of the current directory. The <code>sls</code> function opens the current directory, reads and prints the name and size of its contents. These functions will return <code>0</code> on success and a non-negative integer on failure. The completion message is printed to <code>stderr</code>.</p>
+
+<h3>Regular Commands</h3>
+
+<p>Regular commands are executed using the <code>fork() + execvp() + waitpid()</code> method, just as commands in pipelined commands are executed. Standard output and standard error are redirected if necessary using <code>dup2()</code>. <code>WIFEXITED</code> collects the exit status, and the completion message is printed to <code>stderr</code>.</p>
+
+<h3>Memory Management</h3>
+
+<p>At the beginning of each iteration of the <code>while</code> loop in <code>main</code>, memory is allocated to each index of <code>args</code>, the array which contains the command line inputs, by using <code>malloc()</code>. Before an index of the array <code>args</code> is set to <code>NULL</code>, the element of the array is freed using <code>free()</code>. After the commands have been executed for the current iteration of the loop, the function <code>freeArgs</code> is called, which iterates through <code>args</code> to call <code>free()</code> on any element of the array which has not already been freed.</p>
+
+<h3>Testing</h3>
+
+<p>This program was tested by using different commands and different combinations of commands as the code was being written. The output of this program was also checked with the output of <code>sshell_ref</code>. Additionally, <code>tester.sh</code> was used to check more test cases. Problems that were encountered were debugged with <code>gdb</code>.</p>
+
+
+
         </div>
        
         <!--FOOTER-->
