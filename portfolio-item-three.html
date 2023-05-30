@@ -12,7 +12,7 @@
         <!--Update these with your own fonts if you want-->
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
         +Pro:300,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="style.css">
 
     </head>
     <body>
@@ -45,16 +45,61 @@
         </section>
 
         <div class="portfolio-item-individual">
-            <p>Designed and developed user-friendly websites, maintained and modified web applications.
-                Wrote modular, secure, and clean code (HTML/CSS).
-                Fixed bugs and implemented enhancements that improved web functionality.</p>
-            <img src="img/portfoliopic.JPG" alt = "">
-            <p>Designed and developed user-friendly websites, maintained and modified web applications.
-                Wrote modular, secure, and clean code (HTML/CSS).
-                Fixed bugs and implemented enhancements that improved web functionality.</p>
-            <p>Designed and developed user-friendly websites, maintained and modified web applications.
-                Wrote modular, secure, and clean code (HTML/CSS).
-                Fixed bugs and implemented enhancements that improved web functionality.</p>
+            <!DOCTYPE html>
+<html>
+<head>
+  <title>Post Report: File System Analysis</title>
+</head>
+<body>
+  <h1>Post Report: File System Analysis</h1>
+
+  <h3>1. Introduction</h3>
+  <p>This report presents an analysis of the file system implementation in the "fs.c" and "disk.c" files, along with instructions for using the file system. The purpose of this analysis is to provide an overview of the file system's functionality, structure, and usage guidelines.</p>
+
+  <h3>2. File System Implementation</h3>
+  <p>The file system implementation consists of two main files: "fs.c" and "disk.c." These files contain the necessary code to handle file operations and manage disk storage.</p>
+
+  <h3>2.1 fs.c</h3>
+  <p>The "fs.c" file contains functions and data structures responsible for managing the file system. It includes various operations such as creating and deleting files, opening and closing files, reading and writing data, and navigating through the file system hierarchy.</p>
+
+  <p>The key functions in the "fs.c" file include:</p>
+  <ul>
+    <li><code>create_file()</code>: Creates a new file in the file system.</li>
+    <li><code>delete_file()</code>: Deletes a file from the file system.</li>
+    <li><code>open_file()</code>: Opens a file for reading or writing.</li>
+    <li><code>close_file()</code>: Closes an open file.</li>
+    <li><code>read_file()</code>: Reads data from an open file.</li>
+    <li><code>write_file()</code>: Writes data to an open file.</li>
+    <li><code>seek()</code>: Changes the current position within an open file.</li>
+  </ul>
+
+  <p>Additionally, the "fs.c" file defines data structures such as the file control block (FCB) and directory entry, which store information about files and directories in the file system.</p>
+
+  <h3>2.2 disk.c</h3>
+  <p>The "disk.c" file handles the low-level operations related to disk storage. It provides functions for reading and writing data blocks on the disk. The file system relies on these functions to store and retrieve file data.</p>
+
+  <p>The main functions in the "disk.c" file include:</p>
+  <ul>
+    <li><code>read_block()</code>: Reads a data block from the disk.</li>
+    <li><code>write_block()</code>: Writes a data block to the disk.</li>
+  </ul>
+
+  <h3>3. Instructions</h3>
+  <ol>
+    <li>Include the "fs.c" and "disk.c" files in your project.</li>
+    <li>Initialize the file system by calling the appropriate initialization function (if provided).</li>
+    <li>Use the provided functions in "fs.c" to perform various file operations such as creating, deleting, opening, closing, reading, and writing files.</li>
+    <li>Make use of the functions in "disk.c" to read and write data blocks on the disk.</li>
+  </ol>
+
+  <h3>4. Conclusion</h3>
+  <p>The file system implementation in the "fs.c" and "disk.c" files provides a set of functions and data structures for managing files and disk storage. By following the provided instructions, users can create, delete, open, close, read, and write files using the file system. The "disk.c" file handles low-level disk operations, while the "fs.c" file manages the file system's higher-level functionalities.</p>
+
+  <p>Overall, this file system implementation offers a foundation for organizing and manipulating files efficiently. Further improvements and optimizations can be made based on specific requirements and use cases.</p>
+
+</body>
+</html>
+
         </div>
 
         <!-- Markdown file -->
