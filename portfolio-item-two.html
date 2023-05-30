@@ -39,22 +39,197 @@
             <h1 class="section__title section__title--intro">
                 Operating Systems <strong> User Level Thread Library</strong>
             </h1>
-            <p class="section__subtitle section__subtitle--intro">a short subtitle</p>
+            <p class="section__subtitle section__subtitle--intro">Skills/Tools C/Git Private Repository</p>
             <img src="img/JagmeetRandhawaSmiling.JPG"  alt="Lake tahoe Jagmeet Smiling" class="intro__img">
 
         </section>
 
         <div class="portfolio-item-individual">
-            <p>Designed and developed user-friendly websites, maintained and modified web applications.
-                Wrote modular, secure, and clean code (HTML/CSS).
-                Fixed bugs and implemented enhancements that improved web functionality.</p>
-            <img src="img/portfoliopic.JPG" alt = "">
-            <p>Designed and developed user-friendly websites, maintained and modified web applications.
-                Wrote modular, secure, and clean code (HTML/CSS).
-                Fixed bugs and implemented enhancements that improved web functionality.</p>
-            <p>Designed and developed user-friendly websites, maintained and modified web applications.
-                Wrote modular, secure, and clean code (HTML/CSS).
-                Fixed bugs and implemented enhancements that improved web functionality.</p>
+            <h1><strong>User Level Library Thread</strong></h1>
+<h3><strong> Summary</strong></h3>
+<p>The goal of this project is to be able to create a queue algorithm and build upon that idea to implement and create a multithread user-level library. This project is to allow us to learn and understand the idea of threads by building a basic user-level thread library in C. As a group, we decided to use a linked list implementation to achieve a FIFO queue algorithm that has operations running in O(1) time.</p>
+<hr>
+<h3><strong>Queue Implementation</strong></h3>
+<p>In order to implement a simple FIFO queue, we decided to go with a linked list implementation in order to have all operations, apart from interate and delete, to be running in O(1) time. In order to accomplish this task, we created two <code>struct</code> data structures to store the necessary data needed for enqueueing, dequeueing, deleting, and destroying items within our queue.</p>
+<h3><strong>Struct Queue and Queue_nodes</strong></h3>
+<p>The purpose of creating two separate structures for a linked list implementation is to store necessary data items our queue receives and have that data stored in order to be used in necessary operations such as enqueueing new items, deleting items etc.</p>
+<h4><strong>Struct Queue_nodes</strong></h4>
+<p>Creating a linked list in this structure in order to be able to implement a linked list for our FIFO queue.</p>
+<ul>
+<li>A pointer named <code>next</code> in order to hold the address of the next node and creates a link between two nodes. We use this to point our <code>front</code> node to the next position if an item is deleted or added to the queue.</li>
+<li><code>void data</code> to hold addresses and items within our queue.</li>
+</ul>
+<h4><strong>Struct Queue</strong></h4>
+<ul>
+<li><code>int size</code> to obtain the length of the queue at any moment within the queue. Will update as new items are added into the queue or removed. <code>int size</code> returns empty if no queue has been created.</li>
+<li>Nodes <code>front</code> and <code>end</code> to hold the addresses of items located at the front and back of our queue. We point these nodes to the respective items if necessary if we encounter items being added or removed in the queue. We mainly use these nodes in enqueueing, dequeueing, and deleting items from the queue.</li>
+</ul>
+<h3><strong>Queue_Create and Queue_Destroy</strong></h3>
+<p>When creating a queue in <code>queue_create()</code>, we focus on allocating memory for the queue by using <code>malloc</code> to ensure we have the appropriate amount of memory necessary for any amount of items that may be inserted into the queue. Once our queue is created we....</p>
+<ul>
+<li>Initialize the <code>size</code> of our queue as 0 to state a new empty queue was created.</li>
+<li>Point <code>front</code> node as NULL as well as <code>end</code> node as NULL to signify that no items currently exist within our empty queue.</li>
+<li>Return our newly created queue to be ready for items to be stored in.</li>
+</ul>
+<p>When we no longer have a need for the queue or want to destroy it, we call <code>queue_destroy()</code> to free the memory allocated for the queue.</p>
+<ul>
+<li>We first check if the queue is empty. If it is, we simply return and do nothing since there are no items to destroy.</li>
+<li>Otherwise, we iterate through each node in the queue and free the memory allocated for each node using <code>free()</code>.</li>
+<li>Finally, we set the <code>front</code> and <code>end</code> nodes of the queue to NULL and update the <code>size</code> to 0, indicating an empty queue.</li>
+</ul>
+<h3><strong>Enqueue, Dequeue, and Delete Operations</strong></h3>
+<p>With the basic queue implementation in place, we can now perform operations such as enqueueing, dequeueing, and deleting items from the queue.</p>
+<ul>
+<li><code>queue_enqueue()</code>: This function adds a new item to the end of the queue. It first checks if the queue is empty. If it is, it creates a new node and sets both the <code>front</code> and <code>end</code> nodes to point to the new node. If the queue is not empty, it creates a new node, sets the <code>next</code> pointer of the current <code>end</code> node to the new node, and updates the <code>end</code> node to point to the new node. Finally, it increments the <code>size</code> of the queue.</li>
+<li><code>queue_dequeue()</code>: This function removes and returns the item at the front of the queue. It first checks if the queue is empty. If it is, it returns <code>NULL</code> to indicate an empty queue. If the queue is not empty, it stores the data from the <code>front</code> node, updates the <code>front</code> node to point to the next node, frees the memory of the previous front node, and decrements the <code>size</code> of the queue. Finally, it returns the stored data.</li>
+<li><code>queue_delete()</code>: This function searches for a specific item in the queue and removes it. It first checks if the queue is empty. If it is, it returns <code>false</code> to indicate an empty queue. If the queue is not empty, it iterates through each node in the queue to find the item. If the item is found, it updates the <code>next</code> pointer of the previous node to skip the node containing the item, frees the memory of the node containing the item, and decrements the <code>size</code> of the queue. If the item is not found, it returns <code>false</code>. Finally, it returns <code>true</code> to indicate a successful deletion.</li>
+</ul>
+
+<h3><strong>Queue_Iterate</strong></h3>
+<p>Iterating through the queue to assign item values into the queue as new items are inserted. We use the <code>temp</code> node to assign the value of an item, insert it into the queue, and move along as new items are present in the queue. The implementation includes:</p>
+<ul>
+<li>A <code>while</code> loop to iterate through the queue as long as our <code>temp</code> node is not empty.</li>
+<li>We prematurely stop the iteration process by checking if <code>func</code> is equal to 1 by using <code>if(func(queue,data,arg)==1))</code>, and then check if we have data waiting to be added to the queue.</li>
+<li>Assigning the <code>*data</code> value item to our <code>temp</code> node, moving <code>temp</code> to the next queue position, and proceeding to iterate through the queue again.</li>
+</ul>
+
+<h3><strong>Queue_Length</strong></h3>
+<p>Our last operation within our queue implementation is finding the queue length. In order to obtain our queue size, we have the variable <code>int size</code> stored within our <code>struct queue</code> that tracks the queue length as we perform operations on the queue. The implementation includes:</p>
+<ul>
+<li>Checking if the queue is <code>NULL</code> to return <code>-1</code> and indicating an empty queue.</li>
+<li>If the queue is not empty, returning the queue length by using <code>return queue->size</code> to reflect the length of the queue during operations.</li>
+</ul>
+
+
+<h3><strong>User Thread Implementation</strong></h3>
+
+<p>In order to implement a user-level multithread library, we use resources from the man pages to guide us in the right direction. The implementation includes the use of macros, structs, and global variables.</p>
+
+<h3><strong>Uthread_Start</strong></h3>
+
+<p>In this operation, we allocate memory, initialize queues for implementation, and register the main thread to be ready for subsequent operations:</p>
+
+<ul>
+  <li>Allocate memory for <code>main_thread</code> and <code>context_thread</code>, and perform error handling to check if memory allocation has failed.</li>
+  <li>Initialize queues for implementation by using the process states discussed in the lecture. Initialize queues for the <code>thread_queue</code>, <code>ready</code>, <code>running</code>, <code>zombie</code>, and <code>blocked</code> states.</li>
+  <li>Check if <code>queue_create()</code> fails by performing error handling on one of the initialized queues (e.g., <code>thread_queue</code>). If <code>thread_queue</code> receives an error, assume that the other queue initializations have also failed.</li>
+  <li>Register the main thread by pointing to the created <code>context_queue</code>, setting the <code>tid</code> to 0, and pointing to the stack using <code>uthread_ctx_alloc_stack()</code>.</li>
+</ul>
+
+<h3><strong>Uthread_Create</strong></h3>
+
+<p>Similar to <code>uthread_start()</code>, this operation involves allocating memory, error handling, and registering the allocated memory as a new thread to be ready for execution in the multithread library:</p>
+
+<ul>
+  <li>Allocate memory for <code>new_thread</code> and <code>context_thread</code>, and perform error handling to check if memory allocation has failed (e.g., if either thread is <code>NULL</code>, return <code>-1</code>).</li>
+  <li>Register the <code>new_thread</code> by pointing to the incremented <code>tid</code>, which represents the new thread. Increase the <code>thread_increment</code> to set <code>tid = 1</code> for the first <code>new_thread</code>.</li>
+  <li>Use the <code>stateOfThread</code> variable in the <code>struct</code> to register the <code>new_thread</code> as ready to run, following the process state diagram discussed in the lecture. This state will change as the thread executes until it reaches the zombie state when execution is complete.</li>
+  <li>Return the <code>new_thread</code> with its corresponding thread identifier (<code>tid</code>) to inform the program that a new thread has been created and is ready to run in the multithread library.</li>
+</ul>
+
+<h3><strong>Uthread_Yield</strong></h3>
+
+<p>This operation instructs the current thread to stop running and allows other threads to run. The implementation includes:</p>
+
+<ul>
+  <li>Allocate memory for threads named <code>saveThread</code> and <code>getThread</code>. Set <code>saveThread = current_thread</code> to save the current thread that is running.</li>
+  <li>Set <code>current_thread = getThread</code> to make the new current thread the next thread ready to run.</li>
+  <li>Call <code>uthread_ctx_switch()</code> to switch threads and allow other threads to execute.</li>
+</ul>
+
+<h3><strong>Uthread_Join</strong></h3>
+
+<p>This operation makes the current thread wait for the specified <code>tid</code> to complete and assigns the return value of the finished thread. The current thread is blocked and waits for another thread to join:</p>
+
+<ul>
+  <li>Perform error handling to check if <code>tid</code> has failed to update (e.g., <code>if(tid == 0) return -1</code>). This helps in troubleshooting and indicating if the thread identifier has failed to update.</li>
+  <li>Use a <code>while</code> loop to make the thread enter the blocked state and call <code>uthread_yield()</code> to allow another thread to join.</li>
+</ul>
+
+<h3><strong>Uthread_Stop and Uthread_Exit</strong></h3>
+
+<p>Both operations are similar. <code>Uthread_Stop</code> stops the multithreading library completely if there are no other threads to run, while <code>Uthread_Exit</code> simply exits the current running thread and waits for its execution to finish:</p>
+
+<p><strong>Uthread_Stop</strong></p>
+
+<ul>
+  <li>Allocate memory for a thread called <code>saveThread</code> and set it equal to the current running thread (<code>saveThread = current_thread</code>).</li>
+  <li>Dequeue the running thread and enqueue the exit thread to stop the multithreading library process.</li>
+</ul>
+
+<p><strong>Uthread_Exit</strong></p>
+
+<ul>
+  <li>Grab the return value of the current running thread by setting <code>current_thread->t_retval = retval</code>.</li>
+  <li>Assign the current thread to the zombie state to exit from the running and blocked states (<code>current_thread->stateOfThread = ZOMBIE</code>), and then dequeue it.</li>
+  <li>If there are more threads to run, dequeue the thread that is ready to run, enqueue it to the running thread state, and call <code>uthread_yield()</code> to allow other threads to execute while exiting the current thread.</li>
+</ul>
+
+<h3><strong>Uthread_Self</strong></h3>
+
+<p>This operation returns the thread identifier (<code>TID</code>) of the current running thread. The thread identifiers are collected and stored in the created <code>struct</code>. The implementation includes:</p>
+
+<ul>
+  <li>To return the thread identifier (<code>TID</code>), use <code>return current_thread->tid</code> to send the value of the thread identifier of the current thread.</li>
+  <li>The <code>TID</code> is updated if other threads need to run. The thread identifier is updated in the <code>uthread_create()</code> operation when a new thread is created and ready to run.</li>
+</ul>
+
+<h3>Testing</h3>
+
+<p>For our queue and user-level thread implementation, we built upon the <code>queue_tester_example.c</code> file we were given and created a <code>queue_tester.c</code> file with additional tests to make sure our queue was working. We decided to do a few tests to check if multiple data items were able to be stored, if we can find an item within the queue by iterating, does enqueue and dequeue work, and finally, checking if the queue can be successfully destroyed.</p>
+
+<h3>Queue Testing</h3>
+
+<p>We created the <code>queue_tester.c</code> file to test the functionality of our queue implementation. In this file, we included additional tests to cover various aspects of the queue.</p>
+
+<ul>
+  <li><strong>Multiple data items:</strong> We tested whether the queue can successfully store multiple data items by enqueueing them and then dequeuing them to check if they were retrieved in the correct order.</li>
+  <li><strong>Searching for an item:</strong> We tested the iteration functionality of the queue by searching for a specific item within the queue. We used the <code>Queue_Iterate</code> function to iterate through the queue and compare each item with the desired value. If a match was found, we considered the test successful.</li>
+  <li><strong>Enqueue and dequeue:</strong> We tested the enqueue and dequeue operations by adding items to the queue and removing them in the expected order. We verified that the items were dequeued correctly and that the queue maintained its integrity throughout the process.</li>
+  <li><strong>Queue destruction:</strong> We tested the ability to destroy the queue by calling the <code>queue_destroy</code> function. We ensured that all memory allocated for the queue and its elements was properly released.</li>
+</ul>
+
+<h3><strong>User Level Thread Testing</strong></h3>
+
+<p>For testing the user-level thread implementation, we created a <code>user_thread_test.c</code> file. In this file, we used the implemented user-level thread functions to test the functionality of our multithread library.</p>
+
+<p>We included tests to cover the following scenarios:</p>
+
+<ul>
+  <li><strong>Creating threads:</strong> We tested the <code>uthread_create</code> function to ensure that threads could be successfully created and assigned unique thread identifiers (<code>TIDs</code>). We verified that the thread identifiers were correctly updated.</li>
+  <li><strong>Joining threads:</strong> We tested the <code>uthread_join</code> function to verify that a thread could wait for another thread to complete its execution and retrieve its return value. We ensured that the joining thread properly blocked until the target thread finished.</li>
+  <li><strong>Yielding threads:</strong> We tested the <code>uthread_yield</code> function to check if threads could voluntarily yield the CPU to allow other threads to run. We verified that the context switch occurred correctly.</li>
+  <li><strong>Stopping threads:</strong> We tested the <code>uthread_stop</code> function to ensure that the multithreading library could be stopped gracefully when no other threads were ready to run.</li>
+  <li><strong>Exiting threads:</strong> We tested the <code>uthread_exit</code> function to verify that a thread could exit its execution and properly clean up its resources. We ensured that the next ready thread was scheduled to run.</li>
+  <li><strong>Retrieving thread identifier:</strong> We tested the <code>uthread_self</code> function to confirm that it correctly returned the thread identifier of the calling thread.</li>
+</ul>
+
+<h3><strong>References for Project</strong></h3>
+
+<p>The following resources were used as references during the project:</p>
+
+<ul>
+  <li>Lecture slides, lecture code, and discussion slides. Specifically, the discussion slides provided guidance on makefiles and debugging.</li>
+  <li>GeeksforGeeks articles:
+    <ul>
+      <li>"Queue implementation using a linked list" for understanding how to implement a queue using a linked list and the concepts of enqueueing and dequeueing: <a href="https://www.geeksforgeeks.org/queue-linked-list-implementation/">Link</a></li>
+      <li>"Deleting a node from a linked list" for implementing the deletion function in the queue: <a href="https://www.geeksforgeeks.org/linked-list-set-3-deleting-node/">Link</a></li>
+    </ul>
+  </li>
+  <li>Man pages:
+    <ul>
+      <li><code>pthread_create()</code> man page: <a href="https://man7.org/linux/man-pages/man3/pthread_create.3.html">Link</a></li>
+      <li><code>pthread_join()</code> man page: <a href="https://man7.org/linux/man-pages/man3/pthread_join.3.html">Link</a></li>
+      <li><code>pthread_exit()</code> man page: <a href="https://man7.org/linux/man-pages/man3/pthread_exit.3.html">Link</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Please note that the provided code is a simplified example, and an actual implementation of a user-level thread library would require more complex handling of thread synchronization, scheduling, and resource management.</p>
+
+<h3><strong>Conclusion</strong></h3>
+<p>In conclusion, we have implemented a basic user-level thread library by creating a FIFO queue using a linked list implementation. The queue supports operations such as enqueueing, dequeueing, and deleting items. The implementation allows for efficient O(1) time complexity for all operations except for iteration and deletion. This project has provided us with a better understanding of thread management and data structure implementation.</p>
+
         </div>
        
         <!--FOOTER-->
