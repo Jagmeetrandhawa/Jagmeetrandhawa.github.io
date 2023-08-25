@@ -12,126 +12,106 @@
         <!--Update these with your own fonts if you want-->
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
         +Pro:300,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
 
-    </head>
-    <body>
-        <header>
-            <div class="logo">
-                <!--img src="07eea9dd-921d-48c4-925d-e5c87cf7ed12.jpeg" width="400" height="500" alt=""-->
-            </div>
-            <button class="nav-toggle" aria-label="toggle navigation">
-                <span class="hamburger"></span>
-            </button>
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="https://jagmeetrandhawa.github.io#home" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="https://jagmeetrandhawa.github.io#services" class="nav__link">My Services</a></li>
-                    <li class="nav__item"><a href="https://jagmeetrandhawa.github.io#about" class="nav__link">About me</a></li>
-                    <li class="nav__item"><a href="https://jagmeetrandhawa.github.io#work" class="nav__link">My Work</a></li>
-                </ul>
-            </nav>
-        </header>
+        <div class="top-right-nav">
+            <ul>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#work-experience">Work Experience</a></li>
+                <!-- Add more tabs as needed -->
+            </ul>
+        </div>
+        
 
         <!--Introduction-->
         <section class="intro" id="home">
             <h1 class="section__title section__title--intro">
                 Hi, I am <strong>Jagmeet Randhawa</strong>
             </h1>
-            <p class="section__subtitle section__subtitle--intro">full stack dev</p>
+            <p class="section__subtitle section__subtitle--intro">back-end dev</p>
             <img src="07eea9dd-921d-48c4-925d-e5c87cf7ed12.jpeg"  alt="Lake tahoe Jagmeet Smiling" class="intro__img">
 
         </section>
 
-        <!--My services-->
-        <section class="my-services" id="services">
-            <h2 class="section__title section__title--services">What I do</h2>
-            <div class="services">
-
-             
-                
-                <div class="service">
-    
-                    <h3>Performance Engineer Intern</h3>
-                    <p>During my performance engineering internship at Dragos, an Industrial Cybersecurity expert,
-                        I actively contributed to their mission of safeguarding critical infrastructure from escalating cybersecurity threats. 
-                        I developed multiple tools using RabbitMQ to capture and replay packets at an accelerated rate. 
-                        Analyzing customer PCAPs, I gained valuable insights into protocols and data flows, optimizing product performance.
-                        </p>    
-                    
-                </div> <!--/ service-->
-
-                <div class="service">
-                    <h3>Astoria.Ai</h3>
-                    <p>As a Software Engineering Intern at Astoria.ai, I led an agile team in implementing the Azure DevOps Astoria project. 
-                        I established a corporate Azure DevOps environment, utilizing skills in Azure DevOps, Linux, and Python to ensure
-                        efficient version control, automated builds, and streamlined testing.  
-                        </p>    
-                    
-                </div> <!--/ service-->
-                <div class="service">
-                    <h3>Web Developer Intern</h3>
-                    <p>As a Web Developer Intern at Tax Bears, I developed a user-friendly website for Tax Bears using HTML/CSS and JavaScript,
-                        enhancing the firm’s digital presence. Utilized Django for backend operations, ensuring seamless functionality and data management.
-                        Regularly identified and fixed bugs, implemented enhancements, and improved website performance. 
-                        </p>    
-                
-                </div> <!--/ service-->
-            </div>  <!--/ services-->
-
-            <a href="#work" class="btn">My Work</a>
-        </section>
-
         <!--About Me-->
-        <section class="about-me" id="about">
-            <h2 class="section__title section__title--about">Who I am</h2>
-            <p class="section__subtitle section__subtitle--about"> Developer based out of San Fransiso</p>
+<section class="about-me" id="about">
+    <h2 class="section__title section__title--about">Who I am</h2>
+    <p class="section__subtitle section__subtitle--about">Developer based out of San Francisco</p>
 
-            <div class="about-me__body">
-                <p> Software Engineer with a demonstrated history of enhancing product performance and web functionality.
-                 Proficient in Python, C++, C, HTML, JavaScript, CSS, and technologies like Linux, Git, RabbitMQ, Azure DevOps,
-                 and Unreal Engine 5.
-                </p>
-                <p>
-                    Beyond my technical expertise, I bring a passion for continuous learning and improvement, both as an engineer
-                 and an individual. I'm an active contributor to the tech community, developing projects ranging from a 
-                 Python-based UFC-FIGHTING-BOT to games using Unreal Engine 5's Blueprint language and C++.
-                </p>
-                <p>
-                    Outside of work, I enjoy outdoor activities, sports, and PC gaming. My favorite sport is basketball, but I also enjoy playing tennis.
-                    Hikes are also something that I love to do, Some notable hikes I have been to include Yosemite, Grand Canyon, and Muir Woods. It's nice to breathe the fresh air
-                    and be present in nature. As for PC gaming, the game I find the most entertaining is Halo 3 as I have been playing it since 2007.
+    <div class="about-me__body">
+        <p> I'm a San Francisco-based developer with expertise in front-end and back-end development. Passionate
+            about coding and problem-solving, I thrive on creating efficient software solutions.
+        </p>
+        <p> In addition to my technical skills, I have a deep love for outdoor activities. You'll often find me
+            on basketball courts, biking trails, or hiking paths, enjoying the thrill of physical challenges and
+            exploring the beauty of nature.
+        </p>
+        <p>When I'm not exploring the outdoors or honing my coding skills, you'll find me diving into the exciting
+            world of game development. I unleash my creativity using tools like C++ and Unreal Engine to bring immersive
+            gaming experiences to life. I'm constantly pushing the boundaries and staying up-to-date with the latest
+            industry trends and technologies, always seeking new ways to elevate my game development skills.</p>
+    </div>
+</section>
 
-                </p>
-            </div>
-            <img src="JagmeetRandhawa.jpg"  alt="ADD PHOTO LATER" class="about-me__img">             
-        </section>
 
-        <!--MY WORK-->
-        <section class="my-work" id="work">
-            <h2 class="section__title">My work</h2>
-            <p class="section__subtitle"> A selection of my range of work</p>
+        <div class="projects-section personal-projects">
+            <h2 class="personal-projects__title">Personal Projects</h2>
+            <div class="projects-grid">
+                <div class="project project-card">
+                    <a href="portfolio-item.html" class="github-link project-card__link" target="_blank"><i class="fab fa-github"></i></a>
+                    <h3 class="project-card__title">Simple Shell Script</h3>
+                    <p class="project-card__description">
+                        Simple Shell (sshell): A compact UNIX shell emulating features of bash and zsh.
+                        Supports command execution, output/error redirection, three-stage pipelining,
+                        and built-in commands. Optimized memory management and validated against standard shells.
+                    </p>
 
-            <div class="portfolio">
-                <!--PORTFOLIO ITEM-->
-                <a href="portfolio-item.html" class="portfolio__item">
-                    <img src="simpleShellTurtle.jpg" width="400" height="500" alt="PUT Some pHOTO here" class="portfolio__img">                </a>
-                <!--PORTFOLIO ITEM-->
-                <a href="portfolio-item-two.html" class="portfolio__item">
-                    <img src="multithreading.jpg" width="400" height="500" alt="PUT Some pHOTO here" class="portfolio__img">                </a>
-                    <!--PORTFOLIO ITEM-->
-                <a href="portfolio-item-three.html" class="portfolio__item">
-                    <img src="filesystem.jpg" width="400" height="500"alt="PUT Some pHOTO here" class="portfolio__img">                </a>
-                    <!--PORTFOLIO ITEM-->
-                <a href="portfolio-item-four.html" class="portfolio__item">
-                    <img src="warehousewreckageimage.jpg" width="400" height="500" alt="PUT Some pHOTO here" class="portfolio__img">                </a>
-                    <!--PORTFOLIO ITEM-->
-                <a href="portfolio-item-five.html" class="portfolio__item">
-                    <img src="ufc-logo.jpeg" width="400" height="500" alt="PUT Some pHOTO here" class="portfolio__img">                </a
-
+                    <a href="https://github.com" class="project-card__link">Check it out on GitHub!</a>
                 </div>
-        </section>
 
+                <div class="project project-card">
+                    <a href="portfolio-item-two.html" class="github-link project-card__link" target="_blank"><i class="fab fa-github"></i></a>
+                    <h3 class="project-card__title">User Level Thread Library</h3>
+                    <p class="project-card__description">
+                        Developed a user-level thread library in C, anchored by a FIFO queue using linked list.
+                        Achieved O(1) operations for enqueueing and dequeueing. The library supports thread
+                        creation, joining, yielding, stopping, and exiting. Extensively tested for functionality
+                        and efficiency.
+                    </p>
+
+                    <a href="https://github.com" class="project-card__link">Check it out on GitHub!</a>
+                </div>
+
+                <div class="project project-card">
+                    <a href="portfolio-item-three.html" class="github-link project-card__link" target="_blank"><i class="fab fa-github"></i></a>
+                    <h3 class="project-card__title">File System</h3>
+                <p class="project-card__description">
+                    Designed an MS-FAT-based file system in C, supporting 128 files in one root directory. 
+                    Utilizes a virtual disk binary file with an API for block-level read/write operations
+                </p>
+
+                    <a href="https://github.com" class="project-card__link">Check it out on GitHub!</a>
+                </div>
+
+                <div class="project project-card">
+                    <a href="portfolio-item-four.html" class="github-link project-card__link" target="_blank"><i class="fab fa-github"></i></a>
+                    <h3 class="project-card__title">Project Title 2</h3>
+                    <p class="project-card__description">Short description of the project. This is where you explain the main features or purpose of the project.</p>
+                    <a href="https://github.com" class="project-card__link">Check it out on GitHub!</a>
+                </div>
+
+                <div class="project project-card">
+                    <a href="portfolio-item-five.html" class="github-link project-card__link" target="_blank"><i class="fab fa-github"></i></a>
+                    <h3 class="project-card__title">Project Title 2</h3>
+                    <p class="project-card__description">Short description of the project. This is where you explain the main features or purpose of the project.</p>
+                    <a href="https://github.com" class="project-card__link">Check it out on GitHub!</a>
+                </div>
+
+
+                <!-- Add more projects as needed -->
+            </div>
+        </div>
+        
         <!--FOOTER-->
         <footer class="footer">
             <!--replace with your own email-->
@@ -147,9 +127,19 @@
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://codepen.io">
+                        <i class="fab fa-twitter"></i>
+                </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://codepen.io">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
             </ul>
         </footer>
 
-        <script src="index.js"></script>
+        <script src="js/index.js"></script>
     </body>
 </html>
