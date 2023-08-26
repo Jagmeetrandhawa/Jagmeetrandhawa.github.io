@@ -528,3 +528,46 @@ header{
 .top-right-nav li:hover {
     background-color: #555; /* Adjust the hover color as needed */
 }
+
+
+/* Container for all work experiences */
+.work-experience-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 0;
+    background-color: #2E4E58;
+}
+
+/* Individual work experience box */
+.work-box {
+    flex-basis: calc(33.33% - 20px); /* This ensures that each box takes up roughly 1/3 of the container's width, minus the gap */
+    background-color: #2C2C2C;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-sizing: border-box; /* This ensures padding and border are included in the total width and height of the box */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .work-box {
+        flex-basis: 100%;
+    }
+}
+.work-experience-section {
+    text-align: center; /* This will center the title */
+    width: 100%; /* This ensures the container takes the full width */
+    display: block; /* This ensures the container is a block-level element */
+}
+
+.work-experience-header {
+    display: block; /* This ensures the title is a block-level element */
+    width: 100%; /* This ensures the title takes the full width */
+    text-align: center; /* This centers the text of the title */
+    margin: 0 auto; /* This centers the title block */
+    padding-bottom: 20px; /* Adds some space between the title and the boxes */
+    color: var(--clr-accent);
+}
+
