@@ -571,3 +571,16 @@ header{
     color: var(--clr-accent);
 }
 
+.company-logo {
+    width: 50px; /* Adjust based on your preference */
+    height: 50px;
+    margin-right: 10px; /* Adds some space between the logo and the title */
+    float: left; /* This will make the logo float to the left of the title */
+    border-radius: 50%; /* This makes the image circular */
+    overflow: hidden; /* Ensures that the image doesn't overflow its container */
+}
+
+.work-title {
+    clear: none; /* This ensures the title doesn't clear the float */
+}
+
